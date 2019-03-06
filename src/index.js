@@ -182,10 +182,11 @@ function handleLogin(event) {
 	event.preventDefault();
 	const target = event.target;
 	const username = document.querySelector('#login-id').value;
+	console.log(username);
 
 	if (target.value === 'Login') {
 		logInUser(username);
-		console.log("adsda")
+		// console.log("adsda")
 		// document.querySelector('#container').remove();
 	}
 }
@@ -193,12 +194,10 @@ function handleLogin(event) {
 function logInUser(username) {
 	return fetch('http://localhost:3000/users', {
 		method: 'POST',
-		header: {
-			'Content-Type': 'application/json'
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
 		},
-		body: JSON.stringify({name: username}) 
+		body: JSON.stringify({"name": username})
 	}).then(response => response.json());
 }
-
-
-
